@@ -28,9 +28,46 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="backend\.env" />
+    <Content Include="backend\.gitignore" />
+    <Content Include="backend\index.js" />
+    <Content Include="backend\package-lock.json" />
+    <Content Include="backend\package.json" />
+    <Content Include="backend\src\config\db.js" />
+    <Content Include="backend\src\controllers\appointmentController.js" />
+    <Content Include="backend\src\controllers\barberController.js" />
+    <Content Include="backend\src\controllers\clientController.js" />
+    <Content Include="backend\src\models\Appointment.js" />
+    <Content Include="backend\src\models\Barber.js" />
+    <Content Include="backend\src\models\Client.js" />
+    <Content Include="backend\src\routes\appointmentRoutes.js" />
+    <Content Include="backend\src\routes\barberRoutes.js" />
+    <Content Include="backend\src\routes\clientRoutes.js" />
+    <Content Include="backend\src\server.js" />
+    <Content Include="frontend\package-lock.json" />
+    <Content Include="frontend\package.json" />
+    <Content Include="frontend\public\index.html" />
+    <Content Include="frontend\src\api.js" />
+    <Content Include="frontend\src\App.js" />
+    <Content Include="frontend\src\components\AppointmentList.js" />
+    <Content Include="frontend\src\components\BarberList.js" />
+    <Content Include="frontend\src\components\ClientList.js" />
+    <Content Include="frontend\src\index.js" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="backend\" />
+    <Folder Include="backend\src\" />
+    <Folder Include="backend\src\config\" />
+    <Folder Include="backend\src\controllers\" />
+    <Folder Include="backend\src\models\" />
+    <Folder Include="backend\src\routes\" />
+    <Folder Include="frontend\" />
+    <Folder Include="frontend\public\" />
+    <Folder Include="frontend\src\" />
+    <Folder Include="frontend\src\components\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
