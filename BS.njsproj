@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b9e3b090-df46-49b2-90da-1ed7c46888a2</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>server.js</StartupFile>
+    <StartupFile>frontend\src\index.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,6 +30,9 @@
   <ItemGroup>
     <Content Include="backend\.env" />
     <Content Include="backend\.gitignore" />
+    <Content Include="backend\app.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="backend\index.js" />
     <Content Include="backend\package-lock.json" />
     <Content Include="backend\package.json" />
@@ -44,6 +47,9 @@
     <Content Include="backend\src\routes\barberRoutes.js" />
     <Content Include="backend\src\routes\clientRoutes.js" />
     <Content Include="backend\src\server.js" />
+    <Content Include="frontend\.env">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\package-lock.json" />
     <Content Include="frontend\package.json" />
     <Content Include="frontend\public\index.html" />
@@ -53,7 +59,6 @@
     <Content Include="frontend\src\components\BarberList.js" />
     <Content Include="frontend\src\components\ClientList.js" />
     <Content Include="frontend\src\index.js" />
-    <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>

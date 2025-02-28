@@ -1,20 +1,17 @@
-﻿const Client = require('../models/Client');
+﻿const Client = require('../Models/Client');
 
-// Get all clients
 exports.getAllClients = async (req, res) => {
     try {
-        const clients = await Client.find();
+        const clients = await Client.getAllClients();
         res.json(clients);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
-// Create a new client
 exports.createClient = async (req, res) => {
-    const client = new Client(req.body);
     try {
-        const newClient = await client.save();
+        const newClient = await Client.createClient(req.body);
         res.status(201).json(newClient);
     } catch (err) {
         res.status(400).json({ message: err.message });

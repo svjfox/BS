@@ -1,9 +1,9 @@
 ﻿const express = require('express');
-const barberController = require('../controllers/barberController');
+const { getAllBarbers, createBarber } = require('../Controllers/BarberController');
 
 const router = express.Router();
 
-router.get('/', barberController.getAllBarbers);
-router.post('/', barberController.createBarber);
+router.get('/', getAllBarbers);
+router.post('/', createBarber);
 
 module.exports = router;
