@@ -87,6 +87,9 @@
     <Content Include="frontend\src\components\EditClient.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="frontend\src\components\Navbar.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\src\index.js" />
     <Content Include="README.md" />
   </ItemGroup>
