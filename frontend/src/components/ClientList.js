@@ -1,9 +1,12 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { getClients, createClient } from '../api';
+import { getClients } from '../api';
+import AddClient from './AddClient';
+import EditClient from './EditClient';
+import DeleteClient from './DeleteClient';
 
 const ClientList = () => {
     const [clients, setClients] = useState([]);
-    const [newClient, setNewClient] = useState({ name: '', email: '', pass: '', role: '', phoneNumber: '' });
+    const [selectedClient, setSelectedClient] = useState(null);
 
     useEffect(() => {
         getClients().then(response => {
@@ -15,18 +18,17 @@ const ClientList = () => {
         }).catch(err => console.error('Error fetching clients:', err));
     }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        createClient(newClient).then(response => {
-            if (response && response.data) {
-                setClients([...clients, response.data]);
-                setNewClient({ name: '', email: '', pass: '', role: '', phoneNumber: '' });
-            } else {
-                console.error('Error creating client: No data in response');
-            }
-        }).catch(err => {
-            console.error('Error creating client:', err);
-        });
+    const handleClientAdded = (client) => {
+        setClients([...clients, client]);
+    };
+
+    const handleClientUpdated = (updatedClient) => {
+        setClients(clients.map(client => client.id === updatedClient.id ? updatedClient : client));
+        setSelectedClient(null);
+    };
+
+    const handleClientDeleted = (clientId) => {
+        setClients(clients.filter(client => client.id !== clientId));
     };
 
     return (
@@ -34,17 +36,15 @@ const ClientList = () => {
             <h1>Clients</h1>
             <ul>
                 {clients.map(client => (
-                    <li key={client.email}>{client.name} - {client.email}</li>
+                    <li key={client.id}>
+                        {client.name} - {client.email}
+                        <button onClick={() => setSelectedClient(client)}>Edit</button>
+                        <DeleteClient clientId={client.id} onClientDeleted={handleClientDeleted} />
+                    </li>
                 ))}
             </ul>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Name" value={newClient.name} onChange={(e) => setNewClient({ ...newClient, name: e.target.value })} required />
-                <input type="email" placeholder="Email" value={newClient.email} onChange={(e) => setNewClient({ ...newClient, email: e.target.value })} required />
-                <input type="password" placeholder="Password" value={newClient.pass} onChange={(e) => setNewClient({ ...newClient, pass: e.target.value })} required />
-                <input type="text" placeholder="Role" value={newClient.role} onChange={(e) => setNewClient({ ...newClient, role: e.target.value })} required />
-                <input type="text" placeholder="Phone Number" value={newClient.phoneNumber} onChange={(e) => setNewClient({ ...newClient, phoneNumber: e.target.value })} required />
-                <button type="submit">Add Client</button>
-            </form>
+            <AddClient onClientAdded={handleClientAdded} />
+            {selectedClient && <EditClient client={selectedClient} onClientUpdated={handleClientUpdated} />}
         </div>
     );
 };

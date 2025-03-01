@@ -75,9 +75,18 @@
     <Content Include="frontend\public\index.html" />
     <Content Include="frontend\src\api.js" />
     <Content Include="frontend\src\App.js" />
+    <Content Include="frontend\src\components\AddClient.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\src\components\AppointmentList.js" />
     <Content Include="frontend\src\components\BarberList.js" />
     <Content Include="frontend\src\components\ClientList.js" />
+    <Content Include="frontend\src\components\DeleteClient.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="frontend\src\components\EditClient.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="frontend\src\index.js" />
     <Content Include="README.md" />
   </ItemGroup>

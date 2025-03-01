@@ -6,8 +6,11 @@ import AppointmentList from './components/AppointmentList';
 function App() {
     return (
         <div>
+            <h1></h1>
             <ClientList />
+            <h1></h1>
             <BarberList />
+            <h1></h1>
             <AppointmentList />
         </div>
     );

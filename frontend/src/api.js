@@ -10,6 +10,8 @@ export default api;
 
 export const getClients = () => api.get('/clients').catch(err => console.error('Error fetching clients:', err));
 export const createClient = (client) => api.post('/clients', client).catch(err => console.error('Error creating client:', err));
+export const updateClient = (client) => api.put(`/clients/${client.id}`, client).catch(err => console.error('Error updating client:', err));
+export const deleteClient = (clientId) => api.delete(`/clients/${clientId}`).catch(err => console.error('Error deleting client:', err));
 
 export const getBarbers = () => api.get('/barbers').catch(err => console.error('Error fetching barbers:', err));
 export const createBarber = (barber) => api.post('/barbers', barber).catch(err => console.error('Error creating barber:', err));

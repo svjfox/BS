@@ -1,30 +1,13 @@
-﻿const pool = require('../config/db');
+﻿const express = require('express');
+const { getAllClients, createClient, updateClient, deleteClient } = require('../controllers/clientController');
 
-class Client {
-    static async getAllClients() {
-        try {
-            const result = await pool.request().query('SELECT * FROM Clients');
-            return result.recordset;
-        } catch (err) {
-            throw err;
-        }
-    }
+const router = express.Router();
 
-    static async createClient(client) {
-        try {
-            const { email, name, pass, role, phoneNumber } = client;
-            const result = await pool.request()
-                .input('email', sql.NVarChar, email)
-                .input('name', sql.NVarChar, name)
-                .input('pass', sql.NVarChar, pass)
-                .input('role', sql.NVarChar, role)
-                .input('phoneNumber', sql.NVarChar, phoneNumber)
-                .query('INSERT INTO Clients (Email, Name, Pass, Role, PhoneNumber) VALUES (@email, @name, @pass, @role, @phoneNumber)');
-            return result;
-        } catch (err) {
-            throw err;
-        }
-    }
-}
+router.get('/', getAllClients);
+router.post('/', createClient);
+router.put('/:id', updateClient);
+router.delete('/:id', deleteClient);
 
-module.exports = Client;
+module.exports = router;
+
+
