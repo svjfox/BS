@@ -1,18 +1,30 @@
 ﻿const sql = require('mssql');
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 const config = {
-    server: process.env.DB_SERVER,
-    database: process.env.DB_DATABASE,
+    user: 'your_username',
+    password: 'your_password',
+    server: 'your_server',
+    database: 'your_database',
     options: {
-        trustedConnection: true, // Используется для Windows Authentication
-        encrypt: true, // Для Azure
-        trustServerCertificate: true // Для локального SQL Server
-    }
+        encrypt: true,
+        trustServerCertificate: true,
+    },
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000,
+    },
 };
 
-const pool = new sql.ConnectionPool(config);
+const poolPromise = new sql.ConnectionPool(config)
+    .connect()
+    .then((pool) => {
+        console.log('Connected to SQL Server');
+        return pool;
+    })
+    .catch((err) => {
+        console.error('Database connection failed!', err);
+        process.exit(1);
+    });
 
-module.exports = pool;
+module.exports = { sql, poolPromise };

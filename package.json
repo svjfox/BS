@@ -1,23 +1,9 @@
 {
   "name": "bs",
-  "version": "0.0.0",
-  "description": "BS",
+  "version": "1.0.0",
   "main": "server.js",
-  "author": "",
-  "devDependencies": {
-    "eslint": "^8.21.0"
-  },
-  "eslintConfig": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "morgan": "^1.10.0",
-    "mssql": "^11.0.1"
-  }
+  "dependencies": {}
 }
