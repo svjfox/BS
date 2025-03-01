@@ -22,5 +22,11 @@ app.use('/api/clients', require('./routes/clientRoutes'));
 app.use('/api/barbers', require('./routes/barberRoutes'));
 app.use('/api/appointments', require('./routes/appointmentRoutes'));
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

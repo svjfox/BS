@@ -1,4 +1,4 @@
-﻿const pool = require('../Config/db');
+﻿const pool = require('../config/db');
 
 class Appointment {
     static async getAllAppointments() {

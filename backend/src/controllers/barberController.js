@@ -1,4 +1,4 @@
-﻿const Barber = require('../Models/Barber');
+﻿const Barber = require('../models/Barber');
 
 exports.getAllBarbers = async (req, res) => {
     try {

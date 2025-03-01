@@ -6,14 +6,26 @@ const ClientList = () => {
     const [newClient, setNewClient] = useState({ name: '', email: '', pass: '', role: '', phoneNumber: '' });
 
     useEffect(() => {
-        getClients().then(response => setClients(response.data));
+        getClients().then(response => {
+            if (response && response.data) {
+                setClients(response.data);
+            } else {
+                console.error('Error fetching clients: No data in response');
+            }
+        }).catch(err => console.error('Error fetching clients:', err));
     }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         createClient(newClient).then(response => {
-            setClients([...clients, response.data]);
-            setNewClient({ name: '', email: '', pass: '', role: '', phoneNumber: '' });
+            if (response && response.data) {
+                setClients([...clients, response.data]);
+                setNewClient({ name: '', email: '', pass: '', role: '', phoneNumber: '' });
+            } else {
+                console.error('Error creating client: No data in response');
+            }
+        }).catch(err => {
+            console.error('Error creating client:', err);
         });
     };
 

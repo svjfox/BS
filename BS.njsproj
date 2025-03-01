@@ -29,13 +29,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="backend\.env" />
+    <Content Include="backend\.eslintrc.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="backend\.gitignore" />
+    <Content Include="backend\.prettierrc">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="backend\app.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="backend\Dockerfile" />
     <Content Include="backend\index.js" />
     <Content Include="backend\package-lock.json" />
     <Content Include="backend\package.json" />
+    <Content Include="backend\Properties\launchSettings.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="backend\src\config\db.js" />
     <Content Include="backend\src\controllers\appointmentController.js" />
     <Content Include="backend\src\controllers\barberController.js" />
@@ -50,6 +60,16 @@
     <Content Include="frontend\.env">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="backend\docker-compose.yml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="frontend\.eslintrc.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="frontend\.prettierrc">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="frontend\Dockerfile" />
     <Content Include="frontend\package-lock.json" />
     <Content Include="frontend\package.json" />
     <Content Include="frontend\public\index.html" />
@@ -59,16 +79,11 @@
     <Content Include="frontend\src\components\BarberList.js" />
     <Content Include="frontend\src\components\ClientList.js" />
     <Content Include="frontend\src\index.js" />
-    <Content Include="package.json">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="README.md" />
-    <Content Include="server.js">
-      <SubType>Code</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="backend\" />
+    <Folder Include="backend\Properties\" />
     <Folder Include="backend\src\" />
     <Folder Include="backend\src\config\" />
     <Folder Include="backend\src\controllers\" />

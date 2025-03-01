@@ -1,12 +1,18 @@
 ﻿import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL;
 
-export const getClients = () => axios.get(`${API_URL}/clients`);
-export const createClient = (client) => axios.post(`${API_URL}/clients`, client);
+const api = axios.create({
+    baseURL: API_URL,
+});
 
-export const getBarbers = () => axios.get(`${API_URL}/barbers`);
-export const createBarber = (barber) => axios.post(`${API_URL}/barbers`, barber);
+export default api;
 
-export const getAppointments = () => axios.get(`${API_URL}/appointments`);
-export const createAppointment = (appointment) => axios.post(`${API_URL}/appointments`, appointment);
+export const getClients = () => api.get('/clients').catch(err => console.error('Error fetching clients:', err));
+export const createClient = (client) => api.post('/clients', client).catch(err => console.error('Error creating client:', err));
+
+export const getBarbers = () => api.get('/barbers').catch(err => console.error('Error fetching barbers:', err));
+export const createBarber = (barber) => api.post('/barbers', barber).catch(err => console.error('Error creating barber:', err));
+
+export const getAppointments = () => api.get('/appointments').catch(err => console.error('Error fetching appointments:', err));
+export const createAppointment = (appointment) => api.post('/appointments', appointment).catch(err => console.error('Error creating appointment:', err));

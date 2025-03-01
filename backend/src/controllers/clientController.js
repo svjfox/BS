@@ -1,4 +1,4 @@
-﻿const Client = require('../Models/Client');
+﻿const Client = require('../models/Client');
 
 exports.getAllClients = async (req, res) => {
     try {

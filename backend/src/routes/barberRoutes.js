@@ -1,5 +1,5 @@
 ﻿const express = require('express');
-const { getAllBarbers, createBarber } = require('../Controllers/BarberController');
+const { getAllBarbers, createBarber } = require('../controllers/barberController');
 
 const router = express.Router();
 

@@ -6,14 +6,26 @@ const BarberList = () => {
     const [newBarber, setNewBarber] = useState({ name: '', profileDetails: '', userId: '' });
 
     useEffect(() => {
-        getBarbers().then(response => setBarbers(response.data));
+        getBarbers().then(response => {
+            if (response && response.data) {
+                setBarbers(response.data);
+            } else {
+                console.error('Error fetching barbers: No data in response');
+            }
+        }).catch(err => console.error('Error fetching barbers:', err));
     }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         createBarber(newBarber).then(response => {
-            setBarbers([...barbers, response.data]);
-            setNewBarber({ name: '', profileDetails: '', userId: '' });
+            if (response && response.data) {
+                setBarbers([...barbers, response.data]);
+                setNewBarber({ name: '', profileDetails: '', userId: '' });
+            } else {
+                console.error('Error creating barber: No data in response');
+            }
+        }).catch(err => {
+            console.error('Error creating barber:', err);
         });
     };
 

@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react';
+import { getAppointments, createAppointment } from '../api';
 
 const AppointmentList = () => {
     const [appointments, setAppointments] = useState([]);
@@ -10,23 +11,27 @@ const AppointmentList = () => {
     });
 
     useEffect(() => {
-        fetch('/appointments')
-            .then((res) => res.json())
-            .then((data) => setAppointments(data))
-            .catch((err) => console.error('Error fetching appointments:', err));
+        getAppointments().then(response => {
+            if (response && response.data) {
+                setAppointments(response.data);
+            } else {
+                console.error('Error fetching appointments: No data in response');
+            }
+        }).catch(err => console.error('Error fetching appointments:', err));
     }, []);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const response = await fetch('/appointments', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newAppointment),
+        createAppointment(newAppointment).then(response => {
+            if (response && response.data) {
+                setAppointments([...appointments, response.data]);
+                setNewAppointment({ clientId: '', barberId: '', appointmentTime: '', status: '' });
+            } else {
+                console.error('Error creating appointment: No data in response');
+            }
+        }).catch(err => {
+            console.error('Error creating appointment:', err);
         });
-        if (response.ok) {
-            setAppointments([...appointments, newAppointment]);
-            setNewAppointment({ clientId: '', barberId: '', appointmentTime: '', status: '' });
-        }
     };
 
     return (
