@@ -6,6 +6,16 @@ const api = axios.create({
     baseURL: API_URL,
 });
 
+api.interceptors.request.use(request => {
+    console.log('Starting Request', request);
+    return request;
+});
+
+api.interceptors.response.use(response => {
+    console.log('Response:', response);
+    return response;
+});
+
 export default api;
 
 export const getClients = () => api.get('/clients').catch(err => console.error('Error fetching clients:', err));

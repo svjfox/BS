@@ -14,6 +14,17 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "frontend": {
+      "commandName": "Executable",
+      "executablePath": "npm",
+      "commandLineArgs": "start",
+      "workingDirectory": "C:\\Users\\svjfo\\source\\repos\\BS\\frontend",
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:3000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
